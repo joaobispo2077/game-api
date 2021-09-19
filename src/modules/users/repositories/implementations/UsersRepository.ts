@@ -30,11 +30,9 @@ export class UsersRepository implements IUsersRepository {
     last_name,
   }: IFindUserByFullNameDTO): Promise<User[] | undefined> {
     const findUsersByFullNameQuery = `SELECT * FROM users WHERE LOWER(first_name) = LOWER('${first_name}') AND LOWER(last_name) = LOWER('${last_name}')`;
-    console.log("query is",findUsersByFullNameQuery);
 
     const users = await this.repository.query(findUsersByFullNameQuery); // Complete usando raw query
 
-    console.log("users are", users);
     return users;
   }
 }
